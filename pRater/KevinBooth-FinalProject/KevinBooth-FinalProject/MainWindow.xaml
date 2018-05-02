@@ -1,0 +1,75 @@
+﻿<Window x:Class="KevinBooth_FinalProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KevinBooth_FinalProject"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Title="pRATER" ResizeMode="NoResize" Height="546.818" Width="985.455" Icon="images/logoicon.png">
+
+    <!-- Setting custom button styling to be applied to nav bar buttons-->
+    <Window.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#949494"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#BDC3C7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <!-- End Styling -->
+    <Grid>
+        <!--Begin Left Nav-->
+        <Grid HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="180" Margin="0,0,0,-3" Background="#333">
+            <TextBlock x:Name="txtName" HorizontalAlignment="Left" Margin="63,8,0,0" TextWrapping="Wrap" Text="pRATER" VerticalAlignment="Top" Foreground="white" FontFamily="Century Gothic" FontSize="26.667" MouseEnter="txtName_MouseEnter" MouseLeave="txtName_MouseLeave"/>
+            <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="31" Margin="13,11,0,0" VerticalAlignment="Top" Width="31" Source="images/logoicon.png"/>
+            <Button x:Name="btnHome" Content="Home" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Width="180" Height="55" Background="{x:Null}" FontSize="21.333" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="navBtn_Click"/>
+            <Image x:Name="imgHome" HorizontalAlignment="Left" Height="31" Margin="13,112,0,0" VerticalAlignment="Top" Width="31" Source="images/homeicon.png"/>
+            <Button x:Name="btnBrowse" Content="Browse" HorizontalAlignment="Left" Margin="0,157,0,0" VerticalAlignment="Top" Width="180" Height="55" Background="{x:Null}" FontSize="21.333" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="navBtn_Click"/>
+            <Image x:Name="imgBrowse" HorizontalAlignment="Left" Height="32" Margin="13,169,0,0" VerticalAlignment="Top" Width="31" Source="images/browseicon.png" />
+            <Button x:Name="btnRate" Content="Rate" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="180" Height="55" Background="{x:Null}" FontSize="21.333" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="navBtn_Click"/>
+            <Image x:Name="imgRate" HorizontalAlignment="Left" Height="31" Margin="13,227,0,0" VerticalAlignment="Top" Width="31" Source="images/rateicon.png"/>
+            <Button x:Name="btnAdmininster" Content="Admin" Visibility="Hidden" HorizontalAlignment="Left" Margin="0,271,0,0" VerticalAlignment="Top" Width="180" Height="55" Background="{x:Null}" FontSize="21.333" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="navBtn_Click"/>
+            <Image x:Name="imgAdmin" Visibility="Hidden" HorizontalAlignment="Left" Height="31" Margin="13,284,0,0" VerticalAlignment="Top" Width="31" Source="images/admin.png"/>
+            <Image x:Name="imgNHTI" HorizontalAlignment="Left" Height="69" Margin="10,476,0,0" VerticalAlignment="Top" Width="160" Source="images/nhti-logo.png" MouseEnter="imgNHTI_MouseEnter" MouseLeave="imgNHTI_MouseLeave"/>
+        </Grid>
+        <!--End Left Nav-->
+
+        <!--Begin Top Bar-->
+        <Grid HorizontalAlignment="Left" Height="49" Margin="180,-1,-1,0" VerticalAlignment="Top" Width="805" Background="#990033" MouseDown="Grid_MouseDown" >
+            <TextBlock x:Name="txtTab" HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="Home" VerticalAlignment="Top" Foreground="white" FontFamily="Century Gothic" FontSize="26.667"/>
+            <Button x:Name="imgSettings" HorizontalAlignment="Left" Height="25" Margin="685,13,0,0" VerticalAlignment="Top" Width="25" BorderBrush="Transparent" Style="{DynamicResource ButtonStyle1}" Click="imgSettings_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/settings.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnMinimize" Content="_" HorizontalAlignment="Left" Margin="715,6,0,0" VerticalAlignment="Top" Width="36" Height="35" Background="{x:Null}" FontSize="21.333" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" Click="btnMinimize_Click" Style="{DynamicResource ButtonStyle1}" />
+            <Button x:Name="btnClose" Content="X" HorizontalAlignment="Left" Margin="753,7,0,0" VerticalAlignment="Top" Width="36" Height="35" Background="{x:Null}" FontSize="21.333" FontFamily="Century Gothic" Foreground="White" BorderBrush="{x:Null}" Click="btnClose_Click" Style="{DynamicResource ButtonStyle1}" />
+        </Grid>
+        <!--End Top Bar-->
+        <Grid x:Name="gridSettings" Margin="860,48,0,429" Visibility="Hidden" Panel.ZIndex="1000" Background="White">
+            <Button x:Name="btnAdmin" Content="Admin Login"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="37" Background="{x:Null}" FontSize="15" FontFamily="Century Gothic" Foreground="Black" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Margin="-1,-1,0,0" Click="btnAdmin_Click"/>
+            <Button x:Name="btnDev" Content="Developer"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="35" Background="{x:Null}" FontSize="15" FontFamily="Century Gothic" Foreground="Black" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle1}" Margin="-1,36,-1,0" Click="btnDev_Click"/>
+        </Grid>
+
+        <!--Begin Page Display-->
+        <Frame x:Name="pageFrame" Height="499" Width="805" Margin="180,48,0,0" NavigationUIVisibility="Hidden" x:FieldModifier="public"></Frame>
+        <!--End Page Display-->
+    </Grid>
+</Window>
